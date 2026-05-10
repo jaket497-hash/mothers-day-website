@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mother's Day</title>
+    <style>
+        body {
+            margin: 0;
+            background: #ffb6d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
 
+        #title {
+            font-size: 50px;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="title">Happy Mother's Day!</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("title").style.animation = "fadeOut 2s forwards";
+}, 3000);
+
+setTimeout(() => {
+    window.location.href = "index.html";
+}, 5000);
+</script>
+
+</body>
+</html>
