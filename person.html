@@ -136,7 +136,7 @@ const data = {
             "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92"
         ],
         message: "Happy Mother's Day grandma, you're so amazing to hang out with. You tell me such funny stories about dad when he was younger and you always give me the best snacks when I come over. I wish I could see you more often. I love you so much! Have a great Mother's Day!",
-            items: ["⚾ Yankees","🐱 Cats","🌸 Flowers","❤️ Love","✨ Special Designs"]
+        items: ["⚾ Yankees","🐱 Cats","🌸 Flowers","❤️ Love","✨ Special Designs"]
     }
 };
 
@@ -146,4 +146,26 @@ document.getElementById("title").innerText = name.charAt(0).toUpperCase() + name
 document.getElementById("message").innerText = person.message;
 document.getElementById("items").innerHTML = person.items.join("<br>");
 
-let index
+let index = 0;
+function changeBackground() {
+    document.body.style.backgroundImage = `url('${person.photos[index]}')`;
+    index = (index + 1) % person.photos.length;
+}
+changeBackground();
+setInterval(changeBackground, 5000);
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
