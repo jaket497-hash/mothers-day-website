@@ -11,9 +11,12 @@
             margin: 0;
             font-family: 'Playfair Display', serif;
             color: black;
+
+            /* FIXED MOBILE BACKGROUND ISSUE */
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll; /* <-- FIX */
+            
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -103,17 +106,17 @@ const name = params.get("name");
 
 const data = {
     jaime: {
-        // REAL lilac field photo
+        // REAL lilac field
         photo: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
         message: "Thanks for always being there for me through all the hard and all the easy times of my life. I really couldn't survive without you. I love you so much! Have a great Mother's Day."
     },
     caryn: {
-        // REAL Caribbean Sea photo
-        photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        // BEAUTIFUL RAINY SCENIC PHOTO
+        photo: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
         message: "You are always that cool aunt that I couldn't ask for better. You're always there for me when I need you and you make the best food dishes. I love you so much! Have a great Mother's Day!"
     },
     rebeka: {
-        // New beach photo
+        // Beach
         photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
         message: "We always bond over the best stuff and I really enjoy every minute with you. I love all the support you give me for my sports and academic life. You really know how to help people in their ups and downs of life. I love you so much! Have a great Mother's Day!"
     },
