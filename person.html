@@ -7,7 +7,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding-top: 60px;
-            color: black; /* TEXT IS NOW BLACK */
+            color: black; /* BLACK TEXT */
             animation: fadeIn 2s;
             background-size: cover;
             background-position: center;
@@ -24,22 +24,16 @@
 
         h1 {
             font-size: 55px;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px black; }
-            to { text-shadow: 0 0 25px black; }
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
 
         .message {
             font-size: 26px;
-            margin-top: 10px;
+            margin-top: 20px;
             width: 80%;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.4;
-            animation: fadeIn 3s;
+            line-height: 1.5;
         }
 
         .btn {
@@ -96,52 +90,33 @@ const name = params.get("name");
 
 const data = {
     jaime: {
-        photos: [
-            "https://images.unsplash.com/photo-1501973801540-537f08ccae7b", /* SUNSET */
-            "https://images.unsplash.com/photo-1501973801540-537f08ccae7b",
-            "https://images.unsplash.com/photo-1501973801540-537f08ccae7b"
-        ],
+        photo: "https://images.unsplash.com/photo-1501973801540-537f08ccae7b", // SUNSET
         message: "Thanks for always being there for me through all the hard and all the easy times of my life. I really couldn't survive without you. I love you so much! Have a great Mother's Day."
     },
     caryn: {
-        photos: [
-            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e", /* KEEP BEACH */
-            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-        ],
+        photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e", // BEACH
         message: "You are always that cool aunt that I couldn't ask for better. You're always there for me when I need you and you make the best food dishes. I love you so much! Have a great Mother's Day!"
     },
     rebeka: {
-        photos: [
-            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?newBeach", /* NEW BEACH */
-            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?newBeach2",
-            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?newBeach3"
-        ],
+        photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?differentBeach", // NEW BEACH
         message: "We always bond over the best stuff and I really enjoy every minute with you. I love all the support you give me for my sports and academic life. You really know how to help people in their ups and downs of life. I love you so much! Have a great Mother's Day!"
     },
     janet: {
-        photos: [
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470", /* SCENIC MOUNTAINS */
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-        ],
+        photo: "https://images.unsplash.com/photo-1501785888041-af3ef285b470", // SCENIC
         message: "Happy Mother's Day grandma, you're so amazing to hang out with. You tell me such funny stories about dad when he was younger and you always give me the best snacks when I come over. I wish I could see you more often. I love you so much! Have a great Mother's Day!"
     }
 };
 
 const person = data[name];
 
+// Set background
+document.body.style.backgroundImage = `url('${person.photo}')`;
+
+// Set text
 document.getElementById("title").innerText = name.charAt(0).toUpperCase() + name.slice(1);
 document.getElementById("message").innerText = person.message;
 
-let index = 0;
-function changeBackground() {
-    document.body.style.backgroundImage = `url('${person.photos[index]}')`;
-    index = (index + 1) % person.photos.length;
-}
-changeBackground();
-setInterval(changeBackground, 5000);
-
+// Floating hearts
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
