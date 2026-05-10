@@ -1,1 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mother's Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 60px;
+            color: white;
+            animation: fadeIn 2s;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-size: 55px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px white; }
+            to { text-shadow: 0 0 25px white; }
+        }
+
+        .message {
+            font-size: 28px;
+            margin-top: 10px;
+            animation: fadeIn 3s;
+        }
+
+        .items {
+            font-size: 26px;
+            margin-top: 25px;
+            animation: fadeIn 4s;
+        }
+
+        .btn {
+            margin-top: 40px;
+            padding: 12px 20px;
+            font-size: 20px;
+            background: white;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Animated border */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 8px solid rgba(255,255,255,0.7);
+            box-sizing: border-box;
+            animation: borderGlow 3s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes borderGlow {
+            from { box-shadow: 0 0 10px white; }
+            to { box-shadow: 0 0 30px white; }
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 25px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(100vh); opacity: 1; }
+            to { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="title"></h1>
+<div class="message" id="message"></div>
+<div class="items" id="items"></div>
+
+<button class="btn" onclick="window.location.href='card.html'">Open Card</button>
+<button class="btn" onclick="window.location.href='index.html'">Back</button>
+<button class="btn" onclick="window.location.href='intro.html'">Restart Experience</button>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+
+const data = {
+    jaime: {
+        bg: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6",
+        message: "Thank you for all the love you give!",
+        items: ["🌸 Flowers","🍺 Bud Light","🏈 Jets","⚾ Yankees","❤️ Love","✨ Special Designs","🎵 DMX / Pitbull"]
+    },
+    caryn: {
+        bg: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        message: "Your kindness makes the world brighter!",
+        items: ["📸 Photos","🏖️ Beach","🐶 Dogs","❤️ Love","✨ Special Designs","🎵 Music","🦷 Dentist"]
+    },
+    rebeka: {
+        bg: "https://images.unsplash.com/photo-1505483531331-8325e5d93e66",
+        message: "You bring sunshine wherever you go!",
+        items: ["🌼 Yellow Flowers","🍳 Cooking","🏖️ Beach","❤️ Love","✨ Special Designs"]
+    },
+    janet: {
+        bg: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92",
+        message: "Your heart is full of love and strength!",
+        items: ["⚾ Yankees","🐱 Cats","🌸 Flowers","❤️ Love","✨ Special Designs"]
+    }
+};
+
+const person = data[name];
+
+document.body.style.backgroundImage = `url('${person.bg}')`;
+document.getElementById("title").innerText = name.charAt(0).toUpperCase() + name.slice(1);
+document.getElementById("message").innerText = person.message;
+document.getElementById("items").innerHTML = person.items.join("<br>");
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
