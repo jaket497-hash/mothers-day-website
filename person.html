@@ -100,34 +100,60 @@ const name = params.get("name");
 
 const data = {
     jaime: {
-        bg: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6",
-        message: "Thank you for all the love you give!",
+        photos: [
+            "https://images.unsplash.com/photo-1501004318641-b39e6451bec6",
+            "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+            "https://images.unsplash.com/photo-1499084732479-de2c02d45fc4"
+        ],
+        message: "Thanks for always being there for me through all the hard and all the easy times of my life. I really couldn't survive without you. I love you so much! Have a great Mother's Day.",
         items: ["🌸 Flowers","🍺 Bud Light","🏈 Jets","⚾ Yankees","❤️ Love","✨ Special Designs","🎵 DMX / Pitbull"]
     },
     caryn: {
-        bg: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-        message: "Your kindness makes the world brighter!",
+        photos: [
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+        ],
+        message: "You are always that cool aunt that I couldn't ask for better. You're always there for me when I need you and you make the best food dishes. I love you so much! Have a great Mother's Day!",
         items: ["📸 Photos","🏖️ Beach","🐶 Dogs","❤️ Love","✨ Special Designs","🎵 Music","🦷 Dentist"]
     },
     rebeka: {
-        bg: "https://images.unsplash.com/photo-1505483531331-8325e5d93e66",
-        message: "You bring sunshine wherever you go!",
+        photos: [
+            "https://images.unsplash.com/photo-1505483531331-8325e5d93e66",
+            "https://images.unsplash.com/photo-1505483531331-8325e5d93e66",
+            "https://images.unsplash.com/photo-1505483531331-8325e5d93e66"
+        ],
+        message: "We always bond over the best stuff and I really enjoy every minute with you. I love all the support you give me for my sports and academic life. You really know how to help people in their ups and downs of life. I love you so much! Have a great Mother's Day!",
         items: ["🌼 Yellow Flowers","🍳 Cooking","🏖️ Beach","❤️ Love","✨ Special Designs"]
     },
     janet: {
-        bg: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92",
-        message: "Your heart is full of love and strength!",
+        photos: [
+            "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92",
+            "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92",
+            "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92"
+        ],
+        message: "Happy Mother's Day grandma, you're so amazing to hang out with. You tell me such funny stories about dad when he was younger and you always give me the best snacks when I come over. I wish I could see you more often. I love you so much! Have a great Mother's Day!",
         items: ["⚾ Yankees","🐱 Cats","🌸 Flowers","❤️ Love","✨ Special Designs"]
     }
 };
 
 const person = data[name];
 
-document.body.style.backgroundImage = `url('${person.bg}')`;
+// Set text
 document.getElementById("title").innerText = name.charAt(0).toUpperCase() + name.slice(1);
 document.getElementById("message").innerText = person.message;
 document.getElementById("items").innerHTML = person.items.join("<br>");
 
+// Background slideshow
+let index = 0;
+function changeBackground() {
+    document.body.style.backgroundImage = `url('${person.photos[index]}')`;
+    index = (index + 1) % person.photos.length;
+}
+changeBackground();
+setInterval(changeBackground, 5000);
+
+// Floating hearts
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -138,9 +164,9 @@ function createHeart() {
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 8000);
 }
-
 setInterval(createHeart, 500);
 </script>
+
 
 </body>
 </html>
