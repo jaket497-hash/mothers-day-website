@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mother's Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffe6f2;
+            text-align: center;
+            padding-top: 80px;
+        }
+        h1 {
+            font-size: 40px;
+            color: #d63384;
+        }
+        .btn {
+            display: block;
+            width: 250px;
+            margin: 20px auto;
+            padding: 15px;
+            font-size: 22px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #d63384;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #ffd6e8;
+        }
+    </style>
+</head>
+<body>
 
+<h1>Choose Someone Special</h1>
+
+<button class="btn" onclick="goTo('jaime')">Jaime</button>
+<button class="btn" onclick="goTo('caryn')">Caryn</button>
+<button class="btn" onclick="goTo('rebeka')">Rebeka</button>
+<button class="btn" onclick="goTo('janet')">Janet</button>
+
+<script>
+function goTo(name) {
+    window.location.href = "person.html?name=" + name;
+}
+</script>
+
+</body>
+</html>
